@@ -4,7 +4,8 @@
   "description": "A package for spenn",
   "author": {
     "name": "Mamane Bello",
-    "email": "moussabello19@gmail.com"
+    "email": "moussabello19@gmail.com",
+    "license": "MIT"
   },
   "main": "./dist/spenn.ts",
   "scripts": {
@@ -13,7 +14,27 @@
     "coverage": "nyc yarn test",
     "lint": "eslint src/**/*.ts"
   },
-  "license": "MIT",
+  "files": [
+    "dist",
+    "license",
+    "README.md"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:mamane19/spenn-node.git"
+  },
+  "keywords": [
+    "spenn",
+    "spenn-nodejs",
+    "spenn-node",
+    "spenn-nodejs-package",
+    "spenn-node-package",
+    "spenn-partner-package-node"
+  ],
+  "bugs": {
+    "url": "https://github.com/mamane19/spenn-node/issues"
+  },
+  "homepage": "https://github.com/mamane19/spenn-node#readme",
   "devDependencies": {
     "@typescript-eslint/eslint-plugin": "^4.29.3",
     "@typescript-eslint/parser": "^4.29.3",
