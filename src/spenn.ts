@@ -1,3 +1,1 @@
-export function add(a: number, b: number): number {
-  return a + b;
-}
+// this is the main file for the spenn library
