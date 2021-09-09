@@ -26,28 +26,18 @@ export class DetailedPaymentRequest {
     this.transactionStatus = transactionStatus;
   }
 
-  
   // Generates a new instance of [DetailedPaymentRequest] from a given map of data
-  static fromMap(data: Map<string, any>): DetailedPaymentRequest {
-    const id = data.get("$id");
-    const requestGuid = data.get("requestGuid");
-    const requestStatus = data.get("requestStatus");
-    const birthdatetime = data.get("timestampCreated");
-    const phoneNumber = data.get("phoneNumber");
-    const message = data.get("message");
-    const amount = data.get("amount");
-    const externalRef = data.get("externalReference");
-    const transactionStatus = data.get("transactionStatus");
+  static fromMap(data: Map<string, any>) {
     return new DetailedPaymentRequest(
-      id as string,
-      requestGuid as string,
-      requestStatus as string,
-      birthdatetime as string,
-      phoneNumber as string,
-      message as string,
-      amount as number,
-      externalRef as string,
-      transactionStatus as string
+      data.get("$id") as string,
+      data.get("requestGuid") as string,
+      data.get("requestStatus") as string,
+      data.get("timestampCreated") as string,
+      data.get("phoneNumber") as string,
+      data.get("message") as string,
+      data.get("amount") as number,
+      data.get("externalReference") as string,
+      data.get("transactionStatus") as string
     );
   }
 
@@ -77,7 +67,7 @@ export class DetailedPaymentRequest {
     amount?: number,
     externalRef?: string,
     transactionStatus?: string
-  ): DetailedPaymentRequest {
+  ) {
     return new DetailedPaymentRequest(
       id ?? this.id,
       requestGuid ?? this.requestGuid,
@@ -91,39 +81,18 @@ export class DetailedPaymentRequest {
     );
   }
 
-  // Returns a string representation of this [DetailedPaymentRequest]
-  toString(): string {
-    return (
-      "DetailedPaymentRequest{" +
-      "id: " +
-      this.id +
-      ", " +
-      "requestGuid: " +
-      this.requestGuid +
-      ", " +
-      "requestStatus: " +
-      this.requestStatus +
-      ", " +
-      "birthdatetime: " +
-      this.birthdatetime +
-      ", " +
-      "phoneNumber: " +
-      this.phoneNumber +
-      ", " +
-      "message: " +
-      this.message +
-      ", " +
-      "amount: " +
-      this.amount +
-      ", " +
-      "externalRef: " +
-      this.externalRef +
-      ", " +
-      "transactionStatus: " +
-      this.transactionStatus +
-      "}"
+  // Returns an [Equatable] implementation of this instance of [DetailedPaymentRequest]
+  toEquatable(): DetailedPaymentRequest {
+    return new DetailedPaymentRequest(
+      this.id,
+      this.requestGuid,
+      this.requestStatus,
+      this.birthdatetime,
+      this.phoneNumber,
+      this.message,
+      this.amount,
+      this.externalRef,
+      this.transactionStatus
     );
   }
 }
-
-
