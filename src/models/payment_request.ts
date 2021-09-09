@@ -8,35 +8,31 @@ export class PaymentRequest {
   // Creates a new instance of PaymentRequest
   constructor(
     // {@macro payment_request}
-    public requestedId: string,
+    public requestId: string,
     public id: string,
     public status: string,
     public externalRef: string
   ) {
-    this.requestedId = requestedId;
+    this.requestId = requestId;
     this.id = id;
     this.status = status;
     this.externalRef = externalRef;
   }
 
   // Generates a new instance of PaymentRequest from a given map of data.
-  static fromMap(data: Map<string, any>): PaymentRequest {
-    const requestedId = data.get("requestedId");
-    const id = data.get("$id");
-    const status = data.get("status");
-    const externalRef = data.get("externalReference");
+  static fromMap(data: Map<string, any>) {
     return new PaymentRequest(
-      requestedId as string,
-      id as string,
-      status as string,
-      externalRef as string
+      data.get("requestId") as string,
+      data.get("$id") as string,
+      data.get("status") as string,
+      data.get("externalReference") as string
     );
   }
 
   // Parses the current instance of [PaymentRequest] into a map.
   toMap(): Map<string, any> {
     return new Map<string, any>([
-      ["requestedId", this.requestedId],
+      ["requestId", this.requestId],
       ["$id", this.id],
       ["status", this.status],
       ["externalReference", this.externalRef],
@@ -45,26 +41,26 @@ export class PaymentRequest {
 
   // Copies the current [PaymentRequest] while changing the specified fields.
   copyWith(
-    requestedId?: string,
+    requestId?: string,
     id?: string,
     status?: string,
     externalRef?: string
-  ): PaymentRequest {
+  ) {
     return new PaymentRequest(
-      requestedId ?? this.requestedId,
+      requestId ?? this.requestId,
       id ?? this.id,
       status ?? this.status,
       externalRef ?? this.externalRef
     );
   }
 
-  // Returns a string representation of the current instance of [PaymentRequest].
-  toString(): string {
-    return `PaymentRequest {
-               requestedId: ${this.requestedId},
-               id: ${this.id},
-               status: ${this.status},
-               externalRef: ${this.externalRef},
-          }`;
+  // Returns an [Equatable] implementation of this instance of [DetailedPaymentRequest]
+  toEquatable(): PaymentRequest {
+    return new PaymentRequest(
+      this.requestId,
+      this.id,
+      this.status,
+      this.externalRef
+    );
   }
 }
