@@ -28,6 +28,7 @@ declare class SpennHttpRequestFailure implements SpennException {
      constructor(statusCode: number, body: object);
      
      toString(): string;
+     // {@endtemplate}
 
 };
 
@@ -36,6 +37,7 @@ declare class SpennHttpRequestFailure implements SpennException {
 /// If the response body expected is a [Map] but instead.
 /// we get a [List] for example. Also  thrown when the response body is `null`.
 declare class SpennTypeError implements SpennException {
+     constructor(message: string);
      name: string;
      message: string;
      stack?: string | undefined;
@@ -43,7 +45,10 @@ declare class SpennTypeError implements SpennException {
 
 /// Thrown when an error occurs while deserializing the response body.
 declare class SpennJsonDeserializationException implements SpennException {
+     constructor(message: string);
      name: string;
      message: string;
      stack?: string | undefined;
 }
+
+export { SpennException, SpennHttpException, SpennHttpRequestFailure, SpennTypeError, SpennJsonDeserializationException };

@@ -8,8 +8,8 @@ export class SpennSession {
     public tokenType: "bearer",
     public lifespan: number,
     public audience: string,
-    public birth: Date,
-    public death: Date,
+    public birth: number,
+    public death: number,
     public accountType: string,
     public clientId: string,
     public refreshToken: string
@@ -26,26 +26,17 @@ export class SpennSession {
   }
 
   // Generates a new instance of [SpennSession] from a given map of data.
-  static fromMap(data: Map<string, any>): SpennSession {
-    const token = data.get("access_token");
-    const tokenType = data.get("token_type");
-    const lifespan = data.get("expires_in");
-    const audience = data.get("audience");
-    const birth = data.get(".issued");
-    const death = data.get(".expires");
-    const accountType = data.get("type");
-    const clientId = data.get("clientId");
-    const refreshToken = data.get("refresh_token");
+  static fromMap(data: Map<string, any>) {
     return new SpennSession(
-      token as string,
-      tokenType as "bearer",
-      lifespan as number,
-      audience as string,
-      birth as Date,
-      death as Date,
-      accountType as string,
-      clientId as string,
-      refreshToken as string
+      data.get("access_token") as string,
+      data.get("token_type") as "bearer",
+      data.get("expires_in") as number,
+      data.get("audience") as string,
+      data.get(".issued") as number,
+      data.get(".expires") as number,
+      data.get("type") as string,
+      data.get("clientId") as string,
+      data.get("refresh_token") as string
     );
   }
 
@@ -70,8 +61,8 @@ export class SpennSession {
     tokenType?: "bearer",
     lifespan?: number,
     audience?: string,
-    birth?: Date,
-    death?: Date,
+    birth?: number,
+    death?: number,
     accountType?: string,
     clientId?: string,
     refreshToken?: string
@@ -86,31 +77,6 @@ export class SpennSession {
       accountType ?? this.accountType,
       clientId ?? this.clientId,
       refreshToken ?? this.refreshToken
-    );
-  }
-
-  // Returns a new instance of [SpennSession] with the specified fields changed.
-  copyWithChanges(
-    token?: string,
-    tokenType?: "bearer",
-    lifespan?: number,
-    audience?: string,
-    birth?: Date,
-    death?: Date,
-    accountType?: string,
-    clientId?: string,
-    refreshToken?: string
-  ): SpennSession {
-    return this.copyWith(
-      token,
-      tokenType,
-      lifespan,
-      audience,
-      birth,
-      death,
-      accountType,
-      clientId,
-      refreshToken
     );
   }
 }
