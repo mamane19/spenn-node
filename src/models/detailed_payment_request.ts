@@ -27,38 +27,38 @@ export class DetailedPaymentRequest {
   }
 
   // Generates a new instance of [DetailedPaymentRequest] from a given map of data
-  static fromMap(data: Map<string, any>) {
+  static fromMap(data: any) {
     return new DetailedPaymentRequest(
-      data.get("$id") as string,
-      data.get("requestGuid") as string,
-      data.get("requestStatus") as string,
-      data.get("timestampCreated") as string,
-      data.get("phoneNumber") as string,
-      data.get("message") as string,
-      data.get("amount") as number,
-      data.get("externalReference") as string,
-      data.get("transactionStatus") as string
+      data["$id"] as string,
+      data["requestGuid"] as string,
+      data["requestStatus"] as string,
+      data["timestampCreated"] as string,
+      data["phoneNumber"] as string,
+      data["message"] as string,
+      data["amount"] as number,
+      data["externalReference"] as string,
+      data["transactionStatus"] as string
     );
   }
 
   // Parses this instance of [DetailedPaymentRequest] into a [Map]
-  toMap(): Map<string, any> {
-    return new Map<string, any>([
-      ["$id", this.id],
-      ["requestGuid", this.requestGuid],
-      ["requestStatus", this.requestStatus],
-      ["timestampCreated", this.birthdatetime],
-      ["phoneNumber", this.phoneNumber],
-      ["message", this.message],
-      ["amount", this.amount],
-      ["externalReference", this.externalRef],
-      ["transactionStatus", this.transactionStatus],
-    ]);
+  toMap(): object {
+    return {
+      $id: this.id,
+      requestGuid: this.requestGuid,
+      requestStatus: this.requestStatus,
+      timestampCreated: this.birthdatetime,
+      phoneNumber: this.phoneNumber,
+      message: this.message,
+      amount: this.amount,
+      externalReference: this.externalRef,
+      transactionStatus: this.transactionStatus,
+    };
   }
 
   // Copies the current [DetailedPaymentRequest] while changing the specified fields.
   copyWith(
-    id?: string,
+    id: string,
     requestGuid?: string,
     requestStatus?: string,
     birthdatetime?: string,

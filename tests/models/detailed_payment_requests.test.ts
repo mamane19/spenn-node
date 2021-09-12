@@ -24,16 +24,17 @@ describe("DetailedPaymentRequest", () => {
     transactionStatus
   );
 
-  const subjectData: Map<string, any> = new Map();
-  subjectData.set("$id", id);
-  subjectData.set("requestGuid", requestGuid);
-  subjectData.set("requestStatus", requesStatus);
-  subjectData.set("timestampCreated", birthdatetime);
-  subjectData.set("phoneNumber", phoneNumber);
-  subjectData.set("message", message);
-  subjectData.set("amount", amount);
-  subjectData.set("externalReference", externalRef);
-  subjectData.set("transactionStatus", transactionStatus);
+  const subjectData: object = {
+    $id: id,
+    requestGuid: requestGuid,
+    requestStatus: requesStatus,
+    timestampCreated: birthdatetime,
+    phoneNumber: phoneNumber,
+    message: message,
+    amount: amount,
+    externalReference: externalRef,
+    transactionStatus: transactionStatus,
+  };
 
   it("should return constructor normally", () => {
     expect(

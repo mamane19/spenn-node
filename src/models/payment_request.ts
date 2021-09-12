@@ -20,23 +20,23 @@ export class PaymentRequest {
   }
 
   // Generates a new instance of PaymentRequest from a given map of data.
-  static fromMap(data: Map<string, any>) {
+  static fromMap(data: any) {
     return new PaymentRequest(
-      data.get("requestId") as string,
-      data.get("$id") as string,
-      data.get("status") as string,
-      data.get("externalReference") as string
+      data["requestId"] as string,
+      data["$id"] as string,
+      data["status"] as string,
+      data["externalReference"] as string
     );
   }
 
   // Parses the current instance of [PaymentRequest] into a map.
-  toMap(): Map<string, any> {
-    return new Map<string, any>([
-      ["requestId", this.requestId],
-      ["$id", this.id],
-      ["status", this.status],
-      ["externalReference", this.externalRef],
-    ]);
+  toMap(): object {
+    return {
+      requestId: this.requestId,
+      $id: this.id,
+      status: this.status,
+      externalReference: this.externalRef,
+    };
   }
 
   // Copies the current [PaymentRequest] while changing the specified fields.

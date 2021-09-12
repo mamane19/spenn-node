@@ -23,9 +23,9 @@ declare class SpennHttpRequestFailure implements SpennException {
      message: string;
      stack?: string | undefined;
      statusCode: number;
-     body: object;
+     body: string;
 
-     constructor(statusCode: number, body: object);
+     constructor(statusCode: number, body: string);
      
      toString(): string;
      // {@endtemplate}

@@ -5,7 +5,7 @@ describe("SpennSession", () => {
   const token = "random-token";
   const tokenType = "bearer";
   const lifespan = 120000;
-  const audience = "https://spenn.io";
+  const audience = "";
   const birth = new Date().getTime();
   const death = birth + lifespan;
   const accountType = "client";
@@ -24,16 +24,17 @@ describe("SpennSession", () => {
     refreshToken
   );
 
-  const sessionData: Map<string, any> = new Map<string, any>();
-  sessionData.set("access_token", token);
-  sessionData.set("token_type", tokenType);
-  sessionData.set("expires_in", lifespan);
-  sessionData.set("audience", audience);
-  sessionData.set(".issued", birth);
-  sessionData.set(".expires", death);
-  sessionData.set("type", accountType);
-  sessionData.set("clientId", clientId);
-  sessionData.set("refresh_token", refreshToken);
+  const sessionData: object = {
+    access_token: token,
+    token_type: tokenType,
+    expires_in: lifespan,
+    audience: audience,
+    ".issued": birth,
+    ".expires": death,
+    type: accountType,
+    clientId: clientId,
+    refresh_token: refreshToken,
+  };
 
   it("returns constructor normally", () => {
     expect(() => {
