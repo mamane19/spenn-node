@@ -6,3 +6,4 @@ An NPM package for the SPENN Business Partner API written in NodeJS for NodeJS e
 ![npm](https://img.shields.io/npm/v/spenn-nodejs?color=brightgreen) 
 ![npm bundle size](https://img.shields.io/bundlephobia/min/spenn-nodejs) 
 
+

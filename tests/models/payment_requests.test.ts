@@ -9,11 +9,12 @@ describe("PaymentRequest", () => {
 
   const subject = new PaymentRequest(requestId, id, status, externalRef);
 
-  const testSubjectData: Map<string, any> = new Map();
-  testSubjectData.set("requestId", requestId);
-  testSubjectData.set("$id", id);
-  testSubjectData.set("status", status);
-  testSubjectData.set("externalReference", externalRef);
+  const testSubjectData: object = {
+    requestId: requestId,
+    $id: id,
+    status: status,
+    externalReference: externalRef,
+  };
 
   it("Should return constructor normally", () => {
     expect(() => new PaymentRequest(requestId, id, status, externalRef));
@@ -46,9 +47,9 @@ describe("PaymentRequest", () => {
       expect(newSubject.externalRef).to.equal(externalRef);
     });
   });
-  
-  describe('.toEquatable', () => {
-    it('returns an equatable object', () => {
+
+  describe(".toEquatable", () => {
+    it("returns an equatable object", () => {
       expect(subject.toEquatable()).to.eql({
         requestId: requestId,
         id: id,
@@ -56,5 +57,5 @@ describe("PaymentRequest", () => {
         externalRef: externalRef,
       });
     });
-  })
+  });
 });

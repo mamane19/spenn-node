@@ -26,33 +26,44 @@ export class SpennSession {
   }
 
   // Generates a new instance of [SpennSession] from a given map of data.
-  static fromMap(data: Map<string, any>) {
+  static fromMap(data: any) {
+    data = {
+      token: data["access_token"],
+      tokenType: data["token_type"],
+      lifespan: data["expires_in"],
+      audience: data["audience"],
+      birth: data[".issued"],
+      death: data[".expires"],
+      accountType: data["type"],
+      clientId: data["clientId"],
+      refreshToken: data["refresh_token"],
+    };
     return new SpennSession(
-      data.get("access_token") as string,
-      data.get("token_type") as "bearer",
-      data.get("expires_in") as number,
-      data.get("audience") as string,
-      data.get(".issued") as number,
-      data.get(".expires") as number,
-      data.get("type") as string,
-      data.get("clientId") as string,
-      data.get("refresh_token") as string
+      data.token,
+      data.tokenType,
+      data.lifespan,
+      data.audience,
+      data.birth,
+      data.death,
+      data.accountType,
+      data.clientId,
+      data.refreshToken
     );
   }
 
   // Parses the current instance of [SpennSession] into a Map<String,any>
-  toMap(): Map<string, any> {
-    return new Map<string, any>([
-      ["access_token", this.token],
-      ["token_type", this.tokenType],
-      ["expires_in", this.lifespan],
-      ["audience", this.audience],
-      [".issued", this.birth],
-      [".expires", this.death],
-      ["type", this.accountType],
-      ["clientId", this.clientId],
-      ["refresh_token", this.refreshToken],
-    ]);
+  toMap(): object {
+    return {
+      access_token: this.token,
+      token_type: this.tokenType,
+      expires_in: this.lifespan,
+      audience: this.audience,
+      ".issued": this.birth,
+      ".expires": this.death,
+      type: this.accountType,
+      clientId: this.clientId,
+      refresh_token: this.refreshToken,
+    };
   }
 
   // Copies the current [SpennSession] while changing the specified fields
