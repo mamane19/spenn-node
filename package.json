@@ -10,7 +10,7 @@
   "main": "./dist/spenn.ts",
   "scripts": {
     "build": "tsc",
-    "test": "ts-mocha tests/**/*.test.ts",
+    "test": "ts-mocha tests/**/**/*.test.ts",
     "coverage": "nyc yarn test",
     "lint": "eslint src/**/*.ts"
   },
