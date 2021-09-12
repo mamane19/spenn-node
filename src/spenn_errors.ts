@@ -1,54 +1,37 @@
 // Interface for all exceptions thrown by the spenn package.
-declare class SpennException implements Error {
-    constructor(message: string);
-     name: string;
-     message: string;
-     stack?: string | undefined;
-};
+declare class SpennException extends Error {
+  message: string;
+}
 
 // Thrown if an exception occurs while making an `http` request.
-declare class SpennHttpException implements SpennException {
-    constructor(message: string);
-     name: string;
-     message: string;
-     stack?: string | undefined;
-};
+declare class SpennHttpException extends SpennException {
+  message: string;
+}
 
 // {@template http_request_failure}
 // Thrown if an `http request returns a non-200` status code.
 // {@endtemplate}
-declare class SpennHttpRequestFailure implements SpennException {
-     // {@template http_request_failure}
-     name: string;
-     message: string;
-     stack?: string | undefined;
-     statusCode: number;
-     body: string;
-
-     constructor(statusCode: number, body: string);
-     
-     toString(): string;
-     // {@endtemplate}
-
-};
+declare class SpennHttpRequestFailure extends SpennException {
+  constructor(statusCode: number, body: string);
+}
 
 /// Thrown when the request is successfull but the body of an unexpected type.
 ///
 /// If the response body expected is a [Map] but instead.
 /// we get a [List] for example. Also  thrown when the response body is `null`.
-declare class SpennTypeError implements SpennException {
-     constructor(message: string);
-     name: string;
-     message: string;
-     stack?: string | undefined;
+declare class SpennTypeError extends SpennException {
+  message: string;
 }
 
 /// Thrown when an error occurs while deserializing the response body.
-declare class SpennJsonDeserializationException implements SpennException {
-     constructor(message: string);
-     name: string;
-     message: string;
-     stack?: string | undefined;
+declare class SpennJsonDeserializationException extends SpennException {
+  message: string;
 }
 
-export { SpennException, SpennHttpException, SpennHttpRequestFailure, SpennTypeError, SpennJsonDeserializationException };
+export {
+  SpennException,
+  SpennHttpException,
+  SpennHttpRequestFailure,
+  SpennTypeError,
+  SpennJsonDeserializationException,
+};

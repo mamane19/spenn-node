@@ -55,12 +55,12 @@ export class Spenn {
     if (response.status !== 200) {
       throw new SpennHttpRequestFailure(response.status, response.statusText);
     }
-    if (response.body === null || response.body === undefined) {
+    if (response.body === null || response.body! === undefined) {
       throw new SpennTypeError("Sorry man");
     }
 
     try {
-      return SpennSession.fromMap(response.body);
+      return SpennSession.fromMap(response.body!);
     } catch (_) {
       throw new SpennJsonDeserializationException("Retry again");
     }
@@ -98,7 +98,7 @@ export class Spenn {
     if (response.status !== 200) {
       throw new SpennHttpRequestFailure(response.status, response.statusText);
     }
-    if (response.body === null || response.body === undefined) {
+    if (response.body === null || response.body! === undefined) {
       throw new SpennTypeError("Sorry man");
     }
 
@@ -133,7 +133,7 @@ export class Spenn {
     if (response.status !== 200) {
       throw new SpennHttpRequestFailure(response.status, response.statusText);
     }
-    if (response.body === null || response.body === undefined) {
+    if (response.body === null || response.body! === undefined) {
       throw new SpennTypeError("Sorry man");
     }
     try {
