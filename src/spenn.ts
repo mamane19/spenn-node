@@ -3,7 +3,6 @@ import { SpennSession } from "./models/spenn_session";
 import { DetailedPaymentRequest } from "./models/detailed_payment_request";
 import { PaymentRequest } from "./models/payment_request";
 import {
-  SpennException,
   SpennHttpException,
   SpennHttpRequestFailure,
   SpennJsonDeserializationException,
@@ -17,7 +16,6 @@ export class Spenn {
   /// TODO: uat- should be removed when used in production. maybe this should be
   /// configurable like a variable to be toggled on and off.
 
-  //@visibleForTesting
   baseUrl = "https://uat-idsrv.spenn.com";
 
   /// Autenticate a Business Partner account.
