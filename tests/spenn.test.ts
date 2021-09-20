@@ -51,7 +51,7 @@ describe("Spenn", () => {
       });
     });
 
-    test("calls fetchMock.mock", async () => {
+    it("calls fetchMock.mock", async () => {
       await spenn.authenticate(
         grantType,
         apiKey,
@@ -62,7 +62,7 @@ describe("Spenn", () => {
       expect(fecthMock.called).to.be.true;
     });
 
-    test("throws a SpennHttpException when http request fails", () => {
+    it("throws a SpennHttpException when http request fails", () => {
       fecthMock.post(url, () => {
         const Response = {
           status: 500,
@@ -76,7 +76,7 @@ describe("Spenn", () => {
       ).to.throws(SpennHttpException);
     });
 
-    test("throws a SpennHttpRequestFailure when the status code is not 200", async () => {
+    it("throws a SpennHttpRequestFailure when the status code is not 200", async () => {
       fecthMock.post(url, () => {
         const Response = {
           status: 400,
@@ -91,7 +91,7 @@ describe("Spenn", () => {
       ).to.throws(SpennHttpRequestFailure);
     });
 
-    test("throws a SpennTypeError when the response body is null", async () => {
+    it("throws a SpennTypeError when the response body is null", async () => {
       fecthMock.post(url, () => {
         const Response = {
           status: 200,
@@ -106,7 +106,7 @@ describe("Spenn", () => {
       ).to.throws(SpennTypeError);
     });
 
-    test("throws a SpennJsonDeserializationException when the response body has a non-supported pattern and fails to deserialize", async () => {
+    it("throws a SpennJsonDeserializationException when the response body has a non-supported pattern and fails to deserialize", async () => {
       fecthMock.post(url, () => {
         const Response = {
           status: 200,
@@ -163,7 +163,7 @@ describe("Spenn", () => {
       });
     });
 
-    test("calls fetchMock.mock", async () => {
+    it("calls fetchMock.mock", async () => {
       await spenn.createRequest(
         phoneNumber,
         amount,
@@ -174,7 +174,7 @@ describe("Spenn", () => {
       expect(fecthMock.called).to.be.true;
     });
 
-    test("throws a SpennHttpException when http request fails", () => {
+    it("throws a SpennHttpException when http request fails", () => {
       fecthMock.post(url, () => {
         const Response = {
           status: 500,
@@ -194,7 +194,7 @@ describe("Spenn", () => {
       ).to.throws(SpennHttpException);
     });
 
-    test("throws a SpennHttpRequestFailure when the status code is not 200", async () => {
+    it("throws a SpennHttpRequestFailure when the status code is not 200", async () => {
       fecthMock.post(url, () => {
         const Response = {
           status: 400,
@@ -215,7 +215,7 @@ describe("Spenn", () => {
       ).to.throws(SpennHttpRequestFailure);
     });
 
-    test("throws a SpennTypeError when the response body is null", async () => {
+    it("throws a SpennTypeError when the response body is null", async () => {
       fecthMock.post(url, () => {
         const Response = {
           status: 200,
@@ -236,7 +236,7 @@ describe("Spenn", () => {
       ).to.throws(SpennTypeError);
     });
 
-    test("throws a SpennJsonDeserializationException when the response body has a non-supported pattern and fails to deserialize", async () => {
+    it("throws a SpennJsonDeserializationException when the response body has a non-supported pattern and fails to deserialize", async () => {
       fecthMock.post(url, () => {
         const Response = {
           status: 200,
@@ -289,12 +289,12 @@ describe("Spenn", () => {
       });
     });
 
-    test("calls fetchMock.mock", async () => {
+    it("calls fetchMock.mock", async () => {
       await spenn.cancelRequest(requestGuid, token);
       expect(fecthMock.called).to.be.true;
     });
 
-    test("throws a SpennHttpException when http request fails", () => {
+    it("throws a SpennHttpException when http request fails", () => {
       fecthMock.post(url, () => {
         const Response = {
           status: 500,
@@ -308,7 +308,7 @@ describe("Spenn", () => {
       );
     });
 
-    test("throws a SpennHttpRequestFailure when the status code is not 200", async () => {
+    it("throws a SpennHttpRequestFailure when the status code is not 200", async () => {
       fecthMock.post(url, () => {
         const Response = {
           status: 400,
@@ -323,7 +323,7 @@ describe("Spenn", () => {
       );
     });
 
-    test("throws a SpennTypeError when the response body is null", async () => {
+    it("throws a SpennTypeError when the response body is null", async () => {
       fecthMock.post(url, () => {
         const Response = {
           status: 200,
@@ -336,7 +336,7 @@ describe("Spenn", () => {
       expect(spenn.cancelRequest(requestGuid, token)).to.throws(SpennTypeError);
     });
 
-    test("throws a SpennJsonDeserializationException when the response body has a non-supported pattern and fails to deserialize", async () => {
+    it("throws a SpennJsonDeserializationException when the response body has a non-supported pattern and fails to deserialize", async () => {
       fecthMock.post(url, () => {
         const Response = {
           status: 200,
@@ -388,12 +388,12 @@ describe("Spenn", () => {
       });
     });
 
-    test("calls fetchMock.mock", async () => {
+    it("calls fetchMock.mock", async () => {
       await spenn.checkRequestStatus(requestGuid, token);
       expect(fecthMock.called).to.be.true;
     });
 
-    test("throws a SpennHttpException when http request fails", () => {
+    it("throws a SpennHttpException when http request fails", () => {
       fecthMock.get(url, () => {
         const Response = {
           status: 500,
@@ -407,7 +407,7 @@ describe("Spenn", () => {
       );
     });
 
-    test("throws a SpennHttpRequestFailure when the status code is not 200", async () => {
+    it("throws a SpennHttpRequestFailure when the status code is not 200", async () => {
       fecthMock.get(url, () => {
         const Response = {
           status: 400,
@@ -422,7 +422,7 @@ describe("Spenn", () => {
       );
     });
 
-    test("throws a SpennTypeError when the response body is null", async () => {
+    it("throws a SpennTypeError when the response body is null", async () => {
       fecthMock.get(url, () => {
         const Response = {
           status: 200,
@@ -437,7 +437,7 @@ describe("Spenn", () => {
       );
     });
 
-    test("throws a SpennJsonDeserializationException when the response body has a non-supported pattern and fails to deserialize", async () => {
+    it("throws a SpennJsonDeserializationException when the response body has a non-supported pattern and fails to deserialize", async () => {
       fecthMock.get(url, () => {
         const Response = {
           status: 200,
